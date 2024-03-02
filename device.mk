@@ -31,6 +31,22 @@ DEVICE_PACKAGE_OVERLAYS += \
     $(LOCAL_PATH)/overlay
 	$(LOCAL_PATH)/overlay-lineage
 
+PRODUCT_ENFORCE_RRO_TARGETS := *
+
+PRODUCT_PACKAGES += \
+		FrameworksRes \
+		TelephonyRes \
+		LgeSettingsProviderRes \
+		LgeSettingsRes \
+		LgeSystemUIRes \
+		CarrierConfigRes \
+		LgeWifiOverlay \
+		LgeTetheringOverlay
+
+
+PRODUCT_PACKAGES += \
+		NoCutoutOverlay
+
 # A/B
 AB_OTA_POSTINSTALL_CONFIG += \
     RUN_POSTINSTALL_system=true \
@@ -339,6 +355,52 @@ PRODUCT_PACKAGES += \
     librmnetctl \
     libxml2
 
+# Rootdir
+PRODUCT_PACKAGES += \
+    init.class_main.sh \
+    init.crda.sh \
+    init.lge.forced_usb_path_change.sh \
+    init.lge.usb.default.sh \
+    init.lge.usb.diag.sh \
+    init.lge.usb.lao.sh \
+    init.lge.usb.sh \
+    init.lge.zramswap.sh \
+    init.mdm.sh \
+    init.qcom.coex.sh \
+    init.qcom.early_boot.sh \
+    init.qcom.post_boot.sh \
+    init.qcom.sh \
+    init.qcom.usb.sh \
+    init.qti.chg_policy.sh \
+    init.qti.dcvs.sh \
+    init.qti.display_boot.sh \
+    init.qti.qcv.sh \
+    init.sm8250.crash.sh
+
+PRODUCT_PACKAGES += \
+    fstab.factory \
+    fstab.timelm \
+    init.kona.rc \
+    init.lge.audio.rc \
+    init.lge.display.rc \
+    init.lge.fingerprints.rc \
+    init.lge.power.rc \
+    init.lge.sensors.rc \
+    init.lge.usb.configfs.rc \
+    init.lge.usb.rc \
+    init.lge.vendor.on_boot.rc \
+    init.lge.vendor.on_post_fs.rc \
+    init.lge.vendor.on_post_fs_data.rc \
+    init.qcom.rc \
+    init.qcom.usb.rc \
+    init.qti.ufs.rc \
+    init.target.rc \
+    init.target.wigig.rc \
+    init.timelm.rc \
+    init.timelm_vendor.rc \
+    init.vendor.sensors.rc \
+    ueventd.qcom.rc
+
 # Seccomp policy
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/seccomp/mediacodec.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/mediacodec.policy
@@ -414,7 +476,10 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.wifi.rtt.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.wifi.rtt.xml \
     frameworks/native/data/etc/com.nxp.mifare.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.nxp.mifare.xml \
     frameworks/native/data/etc/handheld_core_hardware.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/handheld_core_hardware.xml \
-    frameworks/native/data/etc/android.software.vulkan.deqp.level-$(VULKAN_DEQP_LEVEL).xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.vulkan.deqp.level.xml
+    frameworks/native/data/etc/android.software.vulkan.deqp.level-$(VULKAN_DEQP_LEVEL).xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.vulkan.deqp.level.xml \
+    $(LOCAL_PATH)/permissions/android.hardware.light.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.light.xml \
+    $(LOCAL_PATH)/permissions/vendor-qti-hardware-sensorscalibrate.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/vendor-qti-hardware-sensorscalibrate.xml \
+    $(LOCAL_PATH)/permissions/vendor.qti.hardware.factory.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/vendor.qti.hardware.factory.xml
 
 # Lights
 PRODUCT_PACKAGES += \
