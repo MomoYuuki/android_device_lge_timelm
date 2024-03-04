@@ -84,14 +84,20 @@ sh_binary {
 }
 
 sh_binary {
-    name: "init.qcom.usb.sh",
-    src: "bin/init.qcom.usb.sh",
+    name: "init.qti.dcvs.sh",
+    src: "bin/init.qti.dcvs.sh",
     vendor: true,
 }
 
 sh_binary {
-    name: "init.qti.dcvs.sh",
-    src: "bin/init.qti.dcvs.sh",
+    name: "init.qti.qcv.sh",
+    src: "bin/init.qti.qcv.sh",
+    vendor: true,
+}
+
+sh_binary {
+    name: "init.qti.chg_policy.sh",
+    src: "bin/init.qti.chg_policy.sh",
     vendor: true,
 }
 
