@@ -46,6 +46,3 @@ on post-fs
 on post-fs-data
 # NFC: create data/nfc for nv storage
     mkdir /data/vendor/nfc 0770 nfc nfc
-
-on early-fs
-    ffu_update
