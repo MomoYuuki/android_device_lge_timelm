@@ -18,6 +18,9 @@ $(call inherit-product-if-exists, vendor/lge/timelm/timelm-vendor.mk)
 
 DEVICE_PATH := device/lge/timelm
 
+# APEX image
+DEXPREOPT_GENERATE_APEX_IMAGE := true
+
 # AAPT
 PRODUCT_AAPT_CONFIG := normal
 PRODUCT_AAPT_PREF_CONFIG := 560dpi
@@ -59,7 +62,7 @@ AB_OTA_POSTINSTALL_CONFIG += \
 AB_OTA_POSTINSTALL_CONFIG += \
     RUN_POSTINSTALL_vendor=true \
     POSTINSTALL_PATH_vendor=bin/checkpoint_gc \
-    FILESYSTEM_TYPE_vendor=erofs \
+    FILESYSTEM_TYPE_vendor=ext4 \
     POSTINSTALL_OPTIONAL_vendor=true
 
 PRODUCT_PACKAGES += \
@@ -134,7 +137,10 @@ BOARD_SHIPPING_API_LEVEL := $(BOARD_API_LEVEL)
 PRODUCT_PACKAGES += \
     android.hardware.boot@1.1-impl-qti \
     android.hardware.boot@1.1-impl-qti.recovery \
-    android.hardware.boot@1.1-service
+    android.hardware.boot@1.1-service \
+	android.hardware.boot@1.1-service \
+	bootctrl.kona \
+	bootctrl.kona.recovery
 
 PRODUCT_PACKAGES_DEBUG += \
     bootctl
