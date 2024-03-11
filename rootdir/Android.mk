@@ -2,21 +2,45 @@ LOCAL_PATH := $(call my-dir)
 
 # Fstab
 
+
 include $(CLEAR_VARS)
 LOCAL_MODULE           := fstab.timelm
 LOCAL_MODULE_TAGS      := optional
 LOCAL_MODULE_CLASS     := ETC
 LOCAL_SRC_FILES        := etc/fstab.timelm
+LOCAL_REQUIRED_MODULES := fstab.timelm.ramdisk
 LOCAL_MODULE_PATH      := $(TARGET_OUT_VENDOR_ETC)
 include $(BUILD_PREBUILT)
 
 include $(CLEAR_VARS)
-LOCAL_MODULE           := fstab.factory
+LOCAL_MODULE           := fstab.qcom
 LOCAL_MODULE_TAGS      := optional
 LOCAL_MODULE_CLASS     := ETC
-LOCAL_SRC_FILES        := etc/fstab.factory
+LOCAL_SRC_FILES        := etc/fstab.qcom
+LOCAL_REQUIRED_MODULES := fstab.qcom.ramdisk
 LOCAL_MODULE_PATH      := $(TARGET_OUT_VENDOR_ETC)
 include $(BUILD_PREBUILT)
+
+
+include $(CLEAR_VARS)
+LOCAL_MODULE           := fstab.qcom.ramdisk
+LOCAL_MODULE_STEM      := fstab.qcom
+LOCAL_MODULE_TAGS      := optional
+LOCAL_MODULE_CLASS     := ETC
+LOCAL_SRC_FILES        := etc/fstab.qcom
+LOCAL_MODULE_PATH      := $(TARGET_RAMDISK_OUT)
+include $(BUILD_PREBUILT)
+
+
+include $(CLEAR_VARS)
+LOCAL_MODULE           := fstab.timelm.ramdisk
+LOCAL_MODULE_STEM      := fstab.timelm
+LOCAL_MODULE_TAGS      := optional
+LOCAL_MODULE_CLASS     := ETC
+LOCAL_SRC_FILES        := etc/fstab.timelm
+LOCAL_MODULE_PATH      := $(TARGET_RAMDISK_OUT)
+include $(BUILD_PREBUILT)
+
 
 # rc
 
@@ -170,6 +194,15 @@ LOCAL_MODULE_TAGS  := optional
 LOCAL_MODULE_CLASS := ETC
 LOCAL_SRC_FILES    := etc/init.vendor.sensors.rc
 LOCAL_MODULE_PATH  := $(TARGET_OUT_VENDOR_ETC)/init
+include $(BUILD_PREBUILT)
+
+include $(CLEAR_VARS)
+LOCAL_MODULE       := ueventd.timelm.rc
+LOCAL_MODULE_STEM  := ueventd.rc
+LOCAL_MODULE_TAGS  := optional
+LOCAL_MODULE_CLASS := ETC
+LOCAL_SRC_FILES    := etc/ueventd.qcom.rc
+LOCAL_MODULE_PATH  := $(TARGET_OUT_VENDOR)/etc
 include $(BUILD_PREBUILT)
 
 include $(CLEAR_VARS)

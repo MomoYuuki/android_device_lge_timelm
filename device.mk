@@ -137,8 +137,6 @@ BOARD_SHIPPING_API_LEVEL := $(BOARD_API_LEVEL)
 PRODUCT_PACKAGES += \
     android.hardware.boot@1.1-impl-qti \
     android.hardware.boot@1.1-impl-qti.recovery \
-    android.hardware.boot@1.1-service \
-	android.hardware.boot@1.1-service \
 	bootctrl.kona \
 	bootctrl.kona.recovery
 
@@ -382,7 +380,7 @@ PRODUCT_PACKAGES += \
     init.sm8250.crash.sh
 
 PRODUCT_PACKAGES += \
-    fstab.factory \
+    fstab.qcom \
     fstab.timelm \
     init.kona.rc \
     init.lge.audio.rc \
@@ -404,6 +402,11 @@ PRODUCT_PACKAGES += \
     init.timelm_vendor.rc \
     init.vendor.sensors.rc \
     ueventd.qcom.rc
+
+# Init
+PRODUCT_COPY_FILES += \
+    $(DEVICE_PATH)/rootdir/etc/ueventd.qcom.rc:$(TARGET_COPY_OUT_VENDOR)/etc/ueventd.rc	\
+    $(DEVICE_PATH)/rootdir/etc/ueventd.qcom.rc:$(TARGET_COPY_OUT_ODM)/ueventd.rc
 
 # Seccomp policy
 PRODUCT_COPY_FILES += \
