@@ -83,7 +83,7 @@ extern "C" {
 #define PTN_MULTIIMGOEM                 "multiimgoem"
 #define PTN_MULTIIMGQTI                 "multiimgqti"
 #define PTN_SWAP_LIST                   PTN_XBL, PTN_XBL_CFG, PTN_MULTIIMGOEM, PTN_MULTIIMGQTI, "aop", "akmu", "tz", "abl", "hyp", "dsp", "keymaster", "cmnlib", "cmnlib64", "frp", "apdp", "devcfg", "keystore", "msadp", "mdtp", "mdtpsecapp", "dsp", "aop", "qupfw", "vbmeta", "dtbo", "imagefv", "ImageFv", "multiimgoem", "multiimgqti", "drm"
-#define AB_PTN_LIST PTN_SWAP_LIST, "boot", "system", "vendor", "odm", "modem", "bluetooth", "product"
+#define AB_PTN_LIST PTN_SWAP_LIST, "boot", "system", "vendor", "dtbo", "modem", "bluetooth", "product"
 #define BOOT_DEV_DIR    "/dev/block/bootdevice/by-name"
 
 /******************************************************************************

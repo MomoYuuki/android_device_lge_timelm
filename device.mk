@@ -137,6 +137,7 @@ BOARD_SHIPPING_API_LEVEL := $(BOARD_API_LEVEL)
 PRODUCT_PACKAGES += \
     android.hardware.boot@1.1-impl-qti \
     android.hardware.boot@1.1-impl-qti.recovery \
+    android.hardware.boot@1.1-service \
 	bootctrl.kona \
 	bootctrl.kona.recovery
 
@@ -243,7 +244,13 @@ PRODUCT_PACKAGES += \
 
 # Keymaster
 PRODUCT_PACKAGES += \
-    android.hardware.keymaster@4.1.vendor
+    android.hardware.keymaster@4.1.vendor \
+    android.hardware.keymaster@4.0.vendor \
+    android.hardware.keymaster@4.0-service
+
+# Keystore
+PRODUCT_PACKAGES += \
+    android.system.keystore2
 
 # Keylayout
 PRODUCT_COPY_FILES += \
@@ -401,12 +408,13 @@ PRODUCT_PACKAGES += \
     init.recovery.timelm.rc \
     init.timelm_vendor.rc \
     init.vendor.sensors.rc \
+    init.logcat.rc \
     ueventd.qcom.rc
 
 # Init
 PRODUCT_COPY_FILES += \
     $(DEVICE_PATH)/rootdir/etc/ueventd.qcom.rc:$(TARGET_COPY_OUT_VENDOR)/etc/ueventd.rc	\
-    $(DEVICE_PATH)/rootdir/etc/ueventd.qcom.rc:$(TARGET_COPY_OUT_ODM)/ueventd.rc
+    $(DEVICE_PATH)/rootdir/etc/ueventd.qcom.rc:$(TARGET_COPY_OUT_ODM)/etc/ueventd.rc
 
 # Seccomp policy
 PRODUCT_COPY_FILES += \
