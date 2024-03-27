@@ -1,4 +1,18 @@
 # Audio
+persist.vendor.audio.voicecall.speaker.stereo=true
+persist.vendor.lge.3rd.speaker.prot.enable=on
+persist.vendor.lge.audio.voice.clarity=off
+
+# Camera
+ro.vendor.lge.aux.camera=2
+ro.vendor.lge.physical.camera=5
+
+# LGE Misc
+ro.vendor.lge.build.target_country=COM
+ro.vendor.lge.build.target_operator=LAO
+ro.vendor.lge.swversion=V60040g
+
+# Audio
 af.fast_track_multiplier=1
 ro.af.client_heap_size_kbyte=7168
 ro.audio.monitorRotation=true
@@ -61,11 +75,6 @@ vendor.lge.audio.hifi_rec.offset_gain=39
 vendor.lge.fm_gain_control_headset=0.7
 vendor.lge.fm_gain_control_speaker=1.0
 
-# Audio
-persist.vendor.audio.voicecall.speaker.stereo=true
-persist.vendor.lge.3rd.speaker.prot.enable=on
-persist.vendor.lge.audio.voice.clarity=off
-
 # Bluetooth
 persist.bluetooth.a2dp_offload.cap=sbc-aac-aptx-aptxhd-ldac
 persist.bluetooth.a2dp_offload.disabled=false
@@ -87,10 +96,6 @@ ro.vendor.lge.dev.fmode_exif=0
 vendor.lge.faceprint.inform.camera=0
 vendor.lge.faceprint.use.camera=0
 
-# Camera
-ro.vendor.lge.aux.camera=2
-ro.vendor.lge.physical.camera=5
-
 # Charger
 persist.vendor.ctm.disallowed=1
 persist.vendor.lge.service.chg_mode=LGE,QNOVO
@@ -98,11 +103,8 @@ persist.vendor.tb.disallowed=1
 ro.charger.enable_suspend=true
 
 # Crypto
-ro.crypto.dm_default_key.options_format.version=2
-ro.crypto.volume.metadata.method=dm-default-key
-ro.crypto.volume.options=aes-256-xts:aes-256-cts:v2
-# Call deleteAllKeys if vold detects a factory reset
-ro.crypto.metadata_init_delete_all_keys.enabled=true
+ro.crypto.set_dun=true
+ro.crypto.volume.filenames_mode=aes-256-cts
 
 # Dalvik dex2oat
 dalvik.vm.dex2oat64.enabled=true
@@ -169,14 +171,6 @@ vendor.gralloc.disable_ubwc=0
 # Keystore
 ro.hardware.keystore_desede=true
 
-# LGE Misc
-ro.vendor.lge.build.target_country=COM
-ro.vendor.lge.build.target_operator=LAO
-ro.vendor.lge.capp_cupss.op.dir=/product
-ro.vendor.lge.capp_cupss.persistlg.dir=/mnt/vendor/persist-lg
-ro.vendor.lge.capp_cupss.rootdir=/product
-ro.vendor.lge.swversion=V60040g
-
 # Media
 debug.stagefright.ccodec=1
 debug.stagefright.omx_default_rank=0
@@ -191,12 +185,15 @@ media.stagefright.thumbnail.prefer_hw_codecs=true
 mm.enable.smoothstreaming=true
 
 # Netflix
-ro.netflix.bsp_rev=Q8250-19131-1
+ro.netflix.bsp_rev=Q855-16947-1
 
 # Netmgr
 persist.vendor.data.iwlan.enable=true
 persist.vendor.data.mode=concurrent
 ro.vendor.use_data_netmgrd=true
+
+# OP
+ro.vendor.lge.capp_cupss.rootdir=/vendor/OP
 
 # PASR
 vendor.power.pasr.enabled=true
@@ -223,7 +220,6 @@ persist.vendor.radio.procedure_bytes=SKIP
 persist.vendor.radio.rat_on=combine
 persist.vendor.radio.sib16_support=1
 ro.telephony.default_network=26
-ro.telephony.iwlan_operation_mode=AP-assisted
 
 # Sensors
 persist.vendor.sensors.enable.mag_filter=false

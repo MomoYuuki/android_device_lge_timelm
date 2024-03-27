@@ -1,52 +1,3 @@
-[bt_firmware/]
-mode: 0771
-user: AID_SYSTEM
-group: AID_SYSTEM
-caps: 0
-
-[dsp/]
-mode: 0771
-user: AID_MEDIA
-group: AID_MEDIA
-caps: 0
-
-[firmware/]
-mode: 0771
-user: AID_SYSTEM
-group: AID_SYSTEM
-caps: 0
-
-[persist/]
-mode: 0771
-user: AID_SYSTEM
-group: AID_SYSTEM
-caps: 0
-
-[firmware/image/*]
-mode: 0771
-user: AID_SYSTEM
-group: AID_SYSTEM
-caps: 0
-
-[system/bin/cnss-daemon]
-mode: 0755
-user: AID_BLUETOOTH
-group: AID_BLUETOOTH
-caps: NET_BIND_SERVICE
-
-[system/bin/pd-mapper]
-mode: 0755
-user: AID_SYSTEM
-group: AID_SYSTEM
-caps: NET_BIND_SERVICE
-
-[system/bin/pm-service]
-mode: 0755
-user: AID_SYSTEM
-group: AID_SYSTEM
-caps: NET_BIND_SERVICE
-
-
 [AID_VENDOR_QTI_DIAG]
 value:2901
 
@@ -71,23 +22,53 @@ value:2907
 [AID_VENDOR_FASTRPC]
 value:2908
 
-[AID_VENDOR_LGAPPS]
-value:5000
+[bt_firmware/]
+mode: 0771
+user: AID_SYSTEM
+group: AID_SYSTEM
+caps: 0
 
-[AID_VENDOR_LGDRM]
-value:5001
+[dsp/]
+mode: 0771
+user: AID_MEDIA
+group: AID_MEDIA
+caps: 0
 
-[AID_VENDOR_LGDRM_ACC]
-value:5002
+[firmware/]
+mode: 0771
+user: AID_SYSTEM
+group: AID_SYSTEM
+caps: 0
 
-[AID_VENDOR_EAS]
-value:5005
+[firmware/image/*]
+mode: 0771
+user: AID_SYSTEM
+group: AID_SYSTEM
+caps: 0
 
-[AID_VENDOR_IMSVT]
-value:5014
+[persist/]
+mode: 0771
+user: AID_SYSTEM
+group: AID_SYSTEM
+caps: 0
 
-[AID_VENDOR_SMARTSHARE]
-value:5903
+[system/bin/cnss-daemon]
+mode: 0755
+user: AID_BLUETOOTH
+group: AID_BLUETOOTH
+caps: NET_BIND_SERVICE
+
+[system/bin/pd-mapper]
+mode: 0755
+user: AID_SYSTEM
+group: AID_SYSTEM
+caps: NET_BIND_SERVICE
+
+[system/bin/pm-service]
+mode: 0755
+user: AID_SYSTEM
+group: AID_SYSTEM
+caps: NET_BIND_SERVICE
 
 [system/vendor/bin/cnd]
 mode: 0755
@@ -112,6 +93,12 @@ mode: 0755
 user: AID_RADIO
 group: AID_RADIO
 caps: NET_BIND_SERVICE
+
+[vendor/bin/imsdaemon]
+mode: 0755
+user: AID_RADIO
+group: AID_RADIO
+caps: NET_BIND_SERVICE WAKE_ALARM BLOCK_SUSPEND
 
 [system/vendor/bin/imsdatadaemon]
 mode: 0755
@@ -149,11 +136,11 @@ user: AID_GPS
 group: AID_GPS
 caps: NET_BIND_SERVICE
 
-[system/vendor/bin/wcnss_filter]
+[system/vendor/bin/qni]
 mode: 0755
-user: AID_BLUETOOTH
-group: AID_BLUETOOTH
-caps: BLOCK_SUSPEND
+user: AID_SYSTEM
+group: AID_SYSTEM
+caps: NET_ADMIN BLOCK_SUSPEND
 
 [vendor/bin/cnd]
 mode: 0755
@@ -178,12 +165,6 @@ mode: 0755
 user: AID_RADIO
 group: AID_RADIO
 caps: NET_BIND_SERVICE
-
-[vendor/bin/imsdaemon]
-mode: 0755
-user: AID_RADIO
-group: AID_RADIO
-caps: NET_BIND_SERVICE WAKE_ALARM BLOCK_SUSPEND
 
 [vendor/bin/imsdatadaemon]
 mode: 0755
@@ -238,6 +219,12 @@ mode: 0755
 user: AID_GPS
 group: AID_GPS
 caps: NET_BIND_SERVICE WAKE_ALARM BLOCK_SUSPEND
+
+[vendor/bin/qni]
+mode: 0755
+user: AID_SYSTEM
+group: AID_SYSTEM
+caps: NET_ADMIN BLOCK_SUSPEND
 
 [vendor/firmware_mnt/image/*]
 mode: 0771

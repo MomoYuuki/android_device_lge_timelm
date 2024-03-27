@@ -81,14 +81,15 @@ TARGET_USES_QTI_MAPPER_2_0 := true
 TARGET_USES_QTI_MAPPER_EXTENSIONS_1_1 := true
 
 # Kernel
-BOARD_KERNEL_CMDLINE += androidboot.memcg=1 lpm_levels.sleep_disabled=1 video=vfb:640x400,bpp=32,memsize=3072000 msm_rtb.filter=0x237 service_locator.enable=1 androidboot.usbcontroller=a600000.dwc3 swiotlb=2048 loop.max_part=7 cgroup.memory=nokmem,nosocket reboot=panic_warm swapaccount=0 dhash_entries=131072 ihash_entries=131072 androidboot.hardware=timelm androidboot.vendor.lge.arb_version=0 buildvariant=user androidboot.selinux=permissive
+BOARD_KERNEL_CMDLINE += androidboot.memcg=1 lpm_levels.sleep_disabled=1 video=vfb:640x400,bpp=32,memsize=3072000 msm_rtb.filter=0x237 service_locator.enable=1 androidboot.usbcontroller=a600000.dwc3 swiotlb=2048 loop.max_part=7 cgroup.memory=nokmem,nosocket reboot=panic_warm swapaccount=0 dhash_entries=131072 ihash_entries=131072 androidboot.hardware=timelm androidboot.vendor.lge.arb_version=0 buildvariant=user
 BOARD_KERNEL_BASE := 0x00000000
+BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 BOARD_KERNEL_OFFSET := 0x00008000
 BOARD_KERNEL_PAGESIZE := 4096
 BOARD_KERNEL_TAGS_OFFSET := 0x00000100
 BOARD_RAMDISK_OFFSET := 0x01000000
 BOARD_KERNEL_SEPARATED_DTBO := true
-BOARD_KERNEL_IMAGE_NAME := Image
+BOARD_KERNEL_IMAGE_NAME := Image.gz
 BOARD_INCLUDE_DTB_IN_BOOTIMG := true
 BOARD_BOOT_HEADER_VERSION := 2
 BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOT_HEADER_VERSION)
@@ -104,6 +105,8 @@ TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilt/kernel
 TARGET_PRODUCT_PROP += $(DEVICE_PATH)/product.prop
 TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop
 TARGET_VENDOR_PROP += $(DEVICE_PATH)/vendor.prop
+TARGET_ODM_PROP += $(DEVICE_PATH)/odm.prop
+TARGET_SYSTEM_EXT_PROP += $(DEVICE_PATH)/system_ext.prop
 
 # Filesystem
 TARGET_FS_CONFIG_GEN := $(DEVICE_PATH)/config.fs
@@ -121,22 +124,18 @@ BOARD_DTBOIMG_PARTITION_SIZE := 0x1800000
 BOARD_SYSTEMIMAGE_FILE_SYSTEM_TYPE := ext4
 BOARD_PRODUCTIMAGE_FILE_SYSTEM_TYPE := ext4
 BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := ext4
+BOARD_ODMIMAGE_FILE_SYSTEM_TYPE := ext4
 TARGET_COPY_OUT_ODM := vendor/odm
 TARGET_COPY_OUT_PRODUCT := product
 TARGET_COPY_OUT_VENDOR := vendor
-TARGET_COPY_OUT_SYSTEM := system
-TARGET_COPY_OUT_SYSTEM_EXT := system/system_ext
 BOARD_USERDATAIMAGE_PARTITION_SIZE :=102105948160
 BOARD_USES_METADATA_PARTITION := true
 
 # Dynamic Partitions
 BOARD_SUPER_PARTITION_SIZE := 9126805504
-BOARD_PRODUCTIMAGE_PARTITION_RESERVED_SIZE  := 1073741824 #(1GB)
-BOARD_SYSTEMIMAGE_PARTITION_RESERVED_SIZE :=  3221225472 #( 3GB )
-BOARD_VENDORIMAGE_PARTITION_RESERVED_SIZE  := 1677721600 #( 1.6GB)
 BOARD_SUPER_PARTITION_GROUPS := qti_dynamic_partitions
 BOARD_QTI_DYNAMIC_PARTITIONS_SIZE := 9122611200
-BOARD_QTI_DYNAMIC_PARTITIONS_PARTITION_LIST := system product vendor
+BOARD_QTI_DYNAMIC_PARTITIONS_PARTITION_LIST := system product vendor odm
 
 # Disable sparse for ext images
 TARGET_USERIMAGES_SPARSE_EXT_DISABLED := true
@@ -147,7 +146,6 @@ TARGET_RELEASETOOLS_EXTENSIONS ?= $(DEVICE_PATH)
 # Platform
 BOARD_VENDOR := lge
 BOARD_USES_QCOM_HARDWARE := true
-BUILD_WITHOUT_VENDOR := true
 TARGET_BOARD_PLATFORM := kona
 
 # RIL
@@ -157,7 +155,12 @@ TARGET_PROVIDES_QTI_TELEPHONY_JAR := true
 # HIDL
 DEVICE_MATRIX_FILE += $(DEVICE_PATH)/compatibility_matrix.xml
 DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/manifest.xml
-DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE += $(DEVICE_PATH)/device_framework_matrix.xml
+# HIDL
+DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE := \
+    $(DEVICE_PATH)/device_framework_matrix.xml \
+    hardware/qcom-caf/common/vendor_framework_compatibility_matrix.xml \
+    vendor/lineage/config/device_framework_matrix.xml
+
     
 # Recovery
 BOARD_INCLUDE_RECOVERY_DTBO := true
@@ -169,7 +172,7 @@ BOARD_HAS_LARGE_FILESYSTEM := true
 
 # SEPolicy
 include device/qcom/sepolicy_vndr-legacy-um/SEPolicy.mk
-include hardware/lge/sepolicy/SEPolicy.mk
+#include hardware/lge/sepolicy/SEPolicy.mk
 SELINUX_IGNORE_NEVERALLOWS := true
 BUILD_BROKEN_VENDOR_PROPERTY_NAMESPACE := true
 

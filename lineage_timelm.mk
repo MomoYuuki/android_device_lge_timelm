@@ -11,9 +11,6 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 # Inherit from device
 $(call inherit-product, device/lge/timelm/device.mk)
 
-# Inherit virtual_ab_ota product
-$(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/launch_with_vendor_ramdisk.mk)
-
 # Inherit some common Lineage stuff.
 $(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 
@@ -27,9 +24,3 @@ TARGET_VENDOR_PRODUCT_NAME := timelm_lao_com
 TARGET_VENDOR_DEVICE_NAME := timelm
 
 PRODUCT_GMS_CLIENTID_BASE := android-lge
-
-PRODUCT_BUILD_PROP_OVERRIDES += \
-    TARGET_DEVICE=timelm_lao_com \
-    PRIVATE_BUILD_DESC="timelm_lao_com-user 13 TKQ1.220829.002 231931450b3b4 release-keys"
-
-BUILD_FINGERPRINT := lge/timelm/timelm:13/TKQ1.220829.002/231931450b3b4:user/release-keys
