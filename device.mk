@@ -378,30 +378,22 @@ PRODUCT_PACKAGES += \
 
 # Rootdir
 PRODUCT_PACKAGES += \
+    fstab.qcom
+
+PRODUCT_PACKAGES += \
     init.class_main.sh \
-    init.crda.sh \
-    init.lge.forced_usb_path_change.sh \
     init.lge.usb.default.sh \
-    init.lge.usb.diag.sh \
     init.lge.usb.lao.sh \
     init.lge.usb.sh \
-    init.lge.zramswap.sh \
     init.mdm.sh \
-    init.qcom.coex.sh \
     init.qcom.early_boot.sh \
     init.qcom.post_boot.sh \
     init.qcom.sh \
+    init.qcom.usb.sh \
     init.qti.chg_policy.sh \
-    init.qti.dcvs.sh \
-    init.qti.display_boot.sh \
-    init.qti.qcv.sh \
-    init.sm8250.crash.sh
+    init.qti.dcvs.sh
 
 PRODUCT_PACKAGES += \
-    fstab.qcom \
-    fstab.timelm \
-    init.kona.rc \
-    init.lge.audio.rc \
     init.lge.display.rc \
     init.lge.fingerprints.rc \
     init.lge.power.rc \
@@ -409,18 +401,23 @@ PRODUCT_PACKAGES += \
     init.lge.usb.configfs.rc \
     init.lge.usb.rc \
     init.lge.vendor.on_boot.rc \
-    init.lge.vendor.on_post_fs.rc \
     init.lge.vendor.on_post_fs_data.rc \
+    init.lge.vendor.on_post_fs.rc \
+    init.lge.vendor.wmc.drv.rc \
+    init.kona.rc \
     init.qcom.rc \
-    init.qti.ufs.rc \
+    init.qcom.usb.rc \
+    init.qti.fm.rc \
+    init.recovery.qcom.rc \
     init.target.rc \
-    init.target.wigig.rc \
-    init.timelm.rc \
-    init.recovery.timelm.rc \
-    init.timelm_vendor.rc \
+    init.time_daemon.rc \
     init.vendor.sensors.rc \
-    init.logcat.rc \
     ueventd.qcom.rc
+
+PRODUCT_COPY_FILES += \
+    $(DEVICE_PATH)/rootdir/etc/fstab.qcom:vendor/etc/fstab.qcom \
+    $(DEVICE_PATH)/rootdir/etc/fstab.qcom:$(TARGET_COPY_OUT_RAMDISK)/fstab.qcom \
+    $(DEVICE_PATH)/rootdir/etc/init.recovery.qcom.rc:$(TARGET_COPY_OUT_ROOT)/init.recovery.qcom.rc
 
 # Init
 PRODUCT_COPY_FILES += \
