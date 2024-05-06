@@ -84,23 +84,18 @@ TARGET_USES_QTI_MAPPER_2_0 := true
 TARGET_USES_QTI_MAPPER_EXTENSIONS_1_1 := true
 
 # Kernel
-BOARD_KERNEL_CMDLINE += \
-        androidboot.memcg=1 \
-        lpm_levels.sleep_disabled=1 \
-        video=vfb:640x400,bpp=32,memsize=3072000 \
-        msm_rtb.filter=0x237 \
-        service_locator.enable=1 \
-        androidboot.usbcontroller=a600000.dwc3 \
-        swiotlb=2048 \
-        loop.max_part=7 \
-        cgroup.memory=nokmem,nosocket \
-        reboot=panic_warm \
-        swapaccount=0 \
-        dhash_entries=131072 \
-        ihash_entries=131072 \
-        androidboot.hardware=qcom \
-        androidboot.vendor.lge.arb_version=0 \
-        buildvariant=user
+BOARD_KERNEL_CMDLINE := \
+    androidboot.console=ttyMSM0 \
+    androidboot.hardware=qcom \
+    androidboot.memcg=1 \
+    androidboot.usbcontroller=a600000.dwc3 \
+    cgroup.memory=nokmem,nosocket \
+    loop.max_part=7 \
+    lpm_levels.sleep_disabled=1 \
+    msm_rtb.filter=0x237 \
+    reboot=panic_warm \
+    service_locator.enable=1 \
+    swiotlb=2048
 
 BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
