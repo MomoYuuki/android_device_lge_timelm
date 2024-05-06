@@ -157,8 +157,8 @@ BOARD_USES_QCOM_HARDWARE := true
 TARGET_BOARD_PLATFORM := kona
 
 # Init
-TARGET_INIT_VENDOR_LIB := libinit_lge_kona
-TARGET_RECOVERY_DEVICE_MODULES := libinit_lge_kona
+#TARGET_INIT_VENDOR_LIB := libinit_lge_kona
+#TARGET_RECOVERY_DEVICE_MODULES := libinit_lge_kona
 
 # RIL
 ENABLE_VENDOR_RIL_SERVICE := true
